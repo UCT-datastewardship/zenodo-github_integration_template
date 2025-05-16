@@ -1,0 +1,25 @@
+{
+  "upload_type": "dataset",
+  "title": "Example Dataset for Zenodo Sandbox Publishing",
+  "creators": [
+    {
+      "name": "Martin Schätz",
+      "affiliation": "UCT Prague",
+      "orcid": "0000-0003-0931-4017"
+    }
+  ],
+  "description": "<p>This is an example dataset published to the Zenodo Sandbox via GitHub integration.</p>",
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "example",
+    "zenodo",
+    "github",
+    "sandbox"
+  ],
+  "communities": [
+    {
+      "id": "zenodo-sandbox"
+    }
+  ]
+}

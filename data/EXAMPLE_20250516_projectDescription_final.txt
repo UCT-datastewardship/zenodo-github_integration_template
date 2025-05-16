@@ -1,0 +1,1 @@
+This is an example project showing how to use github-zenodo integration for publishing. In this case everything is set up with Zenodo Sandbox.
