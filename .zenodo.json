@@ -18,9 +18,4 @@
     "github-actions",
     "sandbox"
   ],
-  "communities": [
-    {
-      "id": "zenodo-sandbox"
-    }
-  ]
 }
