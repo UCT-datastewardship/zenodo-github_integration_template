@@ -15,6 +15,7 @@
     "example",
     "zenodo",
     "github",
+    "github-actions",
     "sandbox"
   ],
   "communities": [
