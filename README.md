@@ -132,6 +132,91 @@ To integrate Zenodo with GitHub and enable automatic DOI generation for your rep
 - Use [Zenodo Sandbox](https://sandbox.zenodo.org/) for testing purposes. DOIs generated in the sandbox are not valid for production.
 - Ensure the `.zenodo.json` file is updated before creating a release, as Zenodo uses it to populate metadata for the DOI.
 
+### Example `.zenodo.json` for a restricted access deposit:**
+
+```json
+{
+  "upload_type": "dataset",
+  "title": "Example Restricted Dataset from GitHub",
+  "creators": [
+    {
+      "name": "Your Organization Name",
+      "affiliation": "Your Organization"
+    }
+  ],
+  "description": "<p>This is an example dataset published to Zenodo with restricted access initially.</p>",
+  "access_right": "restricted",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "example",
+    "zenodo",
+    "github",
+    "restricted"
+  ],
+  "communities": [
+    {
+      "id": "zenodo-sandbox"
+    }
+  ]
+}
+```
+for a closed access deposit:
+```json
+{
+  "upload_type": "dataset",
+  "title": "Example Closed Dataset from GitHub",
+  "creators": [
+    {
+      "name": "Your Organization Name",
+      "affiliation": "Your Organization"
+    }
+  ],
+  "description": "<p>This is an example dataset published to Zenodo with closed access initially.</p>",
+  "access_right": "closed",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "example",
+    "zenodo",
+    "github",
+    "closed"
+  ],
+  "communities": [
+    {
+      "id": "zenodo-sandbox"
+    }
+  ]
+}
+```
+for an embargoed access deposit:
+```json
+{
+  "upload_type": "dataset",
+  "title": "Example Embargoed Dataset from GitHub",
+  "creators": [
+    {
+      "name": "Your Organization Name",
+      "affiliation": "Your Organization"
+    }
+  ],
+  "description": "<p>This is an example dataset published to Zenodo with an embargo.</p>",
+  "access_right": "embargoed",
+  "embargo_date": "2026-01-01",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "example",
+    "zenodo",
+    "github",
+    "embargo"
+  ],
+  "communities": [
+    {
+      "id": "zenodo-sandbox"
+    }
+  ]
+}
+```
+
+
 ## License
 This repository is licensed under the Creative Commons Attribution 4.0 International License (CC-BY-4.0). For more details, see the `LICENSE` file or visit [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/).
 
