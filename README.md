@@ -49,8 +49,7 @@ To trigger this workflow, follow these steps:
        "description": "A brief description of your dataset.",
        "access_right": "open",
        "license": "CC-BY-4.0",
-       "keywords": ["example", "zenodo", "github"],
-       "communities": [{"id": "zenodo-sandbox"}]
+       "keywords": ["example", "zenodo", "github"]
      }
      ```
 
@@ -103,11 +102,6 @@ To integrate Zenodo with GitHub and enable automatic DOI generation for your rep
          "zenodo",
          "github",
          "sandbox"
-       ],
-       "communities": [
-         {
-           "id": "zenodo-sandbox"
-         }
        ]
      }
      ```
