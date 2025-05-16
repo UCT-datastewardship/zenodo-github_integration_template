@@ -28,51 +28,50 @@ jobs:
       - name: Fetch Zenodo JSON Schema
         id: fetch_schema
         run: |
-          python -c "
-          import requests
-          schema_url = 'https://raw.githubusercontent.com/zenodo/zenodo/master/zenodo/modules/deposit/jsonschemas/deposits/records/legacyrecord.json'
-          response = requests.get(schema_url)
-          response.raise_for_status()  # Raise an exception for bad status codes
-          with open('zenodo_schema.json', 'w') as f:
-              f.write(response.text)
-          "
+          cat << 'EOF' > fetch_schema.py
+import requests
+schema_url = 'https://raw.githubusercontent.com/zenodo/zenodo/master/zenodo/modules/deposit/jsonschemas/deposits/records/legacyrecord.json'
+response = requests.get(schema_url)
+response.raise_for_status()  # Raise an exception for bad status codes
+with open('zenodo_schema.json', 'w') as f:
+    f.write(response.text)
+EOF
+          python fetch_schema.py
           echo "schema_path=zenodo_schema.json" >> $GITHUB_OUTPUT
 
       - name: Validate .zenodo.json against Schema
         run: |
-          python -c "
-          import json
-          from jsonschema import validate
-          from jsonschema.exceptions import ValidationError
-          
-          zenodo_file = '.zenodo.json'
-          schema_file = 'zenodo_schema.json'
-          
-          try:
-              with open(zenodo_file, 'r') as f:
-                  zenodo_data = json.load(f)
-          except FileNotFoundError:
-              print(f'Error: {zenodo_file} not found.')
-              exit(1)
-          except json.JSONDecodeError as e:
-              print(f'Error: {zenodo_file} is not valid JSON:')
-              print(e)
-              exit(1)
-          
-          try:
-              with open(schema_file, 'r') as f:
-                  schema = json.load(f)
-              validate(instance=zenodo_data, schema=schema)
-              print(f'{zenodo_file} is valid against the Zenodo schema.')
-          except ValidationError as e:
-              print(f'Error: {zenodo_file} does not conform to the Zenodo schema:')
-              print(e)
-              exit(1)
-          except FileNotFoundError:
-              print(f'Error: Schema file {schema_file} not found.')
-              exit(1)
-          except json.JSONDecodeError as e:
-              print(f'Error: Schema file {schema_file} is not valid JSON:')
-              print(e)
-              exit(1)
-          "
+          cat << 'EOF' > validate_zenodo.py
+import json
+from jsonschema import validate
+from jsonschema.exceptions import ValidationError
+zenodo_file = '.zenodo.json'
+schema_file = 'zenodo_schema.json'
+try:
+    with open(zenodo_file, 'r') as f:
+        zenodo_data = json.load(f)
+except FileNotFoundError:
+    print(f'Error: {zenodo_file} not found.')
+    exit(1)
+except json.JSONDecodeError as e:
+    print(f'Error: {zenodo_file} is not valid JSON:')
+    print(e)
+    exit(1)
+try:
+    with open(schema_file, 'r') as f:
+        schema = json.load(f)
+    validate(instance=zenodo_data, schema=schema)
+    print(f'{zenodo_file} is valid against the Zenodo schema.')
+except ValidationError as e:
+    print(f'Error: {zenodo_file} does not conform to the Zenodo schema:')
+    print(e)
+    exit(1)
+except FileNotFoundError:
+    print(f'Error: Schema file {schema_file} not found.')
+    exit(1)
+except json.JSONDecodeError as e:
+    print(f'Error: Schema file {schema_file} is not valid JSON:')
+    print(e)
+    exit(1)
+EOF
+          python validate_zenodo.py
