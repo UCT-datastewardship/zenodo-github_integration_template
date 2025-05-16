@@ -15,11 +15,7 @@
     "example",
     "zenodo",
     "github",
+    "github-actions",
     "sandbox"
-  ],
-  "communities": [
-    {
-      "id": "zenodo-sandbox"
-    }
   ]
 }
