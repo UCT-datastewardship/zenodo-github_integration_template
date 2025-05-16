@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/984867587.svg)](https://doi.org/10.5281/zenodo.15446418)
+
 # zenodo-github_integration_template
 
 ## Overview
